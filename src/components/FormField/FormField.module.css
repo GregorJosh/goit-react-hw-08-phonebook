@@ -1,0 +1,20 @@
+.form-field {
+    width: 100%;
+
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.vertical {
+    composes: form-field;
+
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@media screen and (min-width: 600px) {
+    .form-field {
+        width: 40%;
+    }
+}
