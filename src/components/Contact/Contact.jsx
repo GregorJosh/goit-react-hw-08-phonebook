@@ -1,17 +1,18 @@
 import { useDispatch } from 'react-redux';
 
-import { removeContact } from 'redux/contactsSlice';
 import Button from 'components/Button/Button';
+
+import { deleteContact } from 'redux/operations';
 
 import styles from './Contact.module.css';
 
-const Contact = ({ name, number }) => {
+const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();
 
   const { contact, name: nameRule, number: numberRule } = styles;
 
-  const onRemove = name => {
-    dispatch(removeContact(name));
+  const onRemove = id => {
+    dispatch(deleteContact(id));
   };
 
   return (
@@ -19,7 +20,7 @@ const Contact = ({ name, number }) => {
       <span className={nameRule}>{name}</span>
       <span className={numberRule}>{number}</span>
 
-      <Button onClick={onRemove} value={name}>
+      <Button onClick={onRemove} value={id}>
         Remove
       </Button>
     </li>

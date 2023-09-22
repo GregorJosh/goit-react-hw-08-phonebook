@@ -1,34 +1,49 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
+import { addContact, deleteContact, fetchContacts } from './operations';
 
-const initialContactsState = [];
+const onPending = state => {
+  state.isLoading = true;
+};
+
+const onRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
+const isPending = action => {
+  return action.type.endsWith('/pending');
+};
+
+const isRejected = action => {
+  return action.type.endsWith('/rejected');
+};
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: initialContactsState,
-  reducers: {
-    addContact: {
-      reducer(state, action) {
-        state.push(action.payload);
-      },
-      prepare({ name, number }) {
-        return {
-          payload: {
-            name,
-            number,
-            id: nanoid(),
-          },
-        };
-      },
-    },
-    removeContact(state, { payload }) {
-      return state.filter(({ name }) => name !== payload);
-    },
-    setContacts(state, { payload }) {
-      return payload;
-    },
+  initialState: {
+    items: [],
+    isLoading: false,
+    error: null,
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items.push(action.payload);
+      })
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items = state.items.filter(({ id }) => id !== action.payload);
+      })
+      .addMatcher(isPending, onPending)
+      .addMatcher(isRejected, onRejected)
+      .addDefaultCase(state => {state.error = "function not found."});
   },
 });
 
-export const { addContact, removeContact, setContacts } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
