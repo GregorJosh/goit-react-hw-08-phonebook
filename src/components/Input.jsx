@@ -1,6 +1,15 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+const StyledErrorDiv = styled.div`
+  display: none;
+
+  font-size: 0.8em;
+  background-color: rgba(255, 198, 198, 0.188);
+  color: red;
+  border-radius: 4px;
+`;
+
 const StyledInput = styled.input`
   width: 100%;
   padding: 5px;
@@ -33,15 +42,6 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledErrorDiv = styled.div`
-  display: none;
-
-  font-size: 0.8em;
-  background-color: rgba(255, 198, 198, 0.188);
-  color: red;
-  border-radius: 4px;
-`;
-
 const Input = props => {
   const { name, type, pattern, title, placeholder, value } = props;
 
@@ -67,7 +67,7 @@ const Input = props => {
         autoComplete="on"
         required
       />
-      <StyledErrorDiv>{title}</StyledErrorDiv>
+      <StyledErrorDiv className="error">{title}</StyledErrorDiv>
     </>
   );
 };
