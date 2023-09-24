@@ -13,8 +13,8 @@ const StyledDiv = styled.div`
     width: 40%;
   }
 
-  ${({ vertical }) =>
-    vertical &&
+  ${({ $vertical }) =>
+    $vertical &&
     css`
       flex-direction: column;
       align-items: flex-start;
@@ -23,7 +23,7 @@ const StyledDiv = styled.div`
 
 const FormField = ({ label, vertical = false, children: input }) => {
   return (
-    <StyledDiv vertical={vertical}>
+    <StyledDiv $vertical={vertical}>
       <label htmlFor={input.props.name}>{label}</label>
       {input}
     </StyledDiv>

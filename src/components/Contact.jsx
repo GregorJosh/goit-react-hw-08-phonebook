@@ -42,8 +42,8 @@ const Contact = ({ name, number, id }) => {
 
 Contact.propTypes = {
   name: PropTypes.string.isRequired,
-  number: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired,
+  number: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Contact;
