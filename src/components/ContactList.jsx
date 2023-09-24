@@ -37,8 +37,8 @@ const ContactList = () => {
       </FormField>
 
       <StyledList>
-        {contacts.map(({ id, name, number }) => (
-          <Contact key={id} name={name} number={number} id={id} />
+        {contacts.map(({ id, name, phone }) => (
+          <Contact key={id} name={name} phone={phone} id={id} />
         ))}
       </StyledList>
     </Section>

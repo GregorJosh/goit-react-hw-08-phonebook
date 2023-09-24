@@ -18,20 +18,20 @@ const StyledListItem = styled.li`
     width: 30%;
   }
 
-  > .number {
+  > .phone {
     width: 30%;
     text-align: right;
   }
 `;
 
-const Contact = ({ name, number, id }) => {
+const Contact = ({ name, phone, id }) => {
   const dispatch = useDispatch();
   const onRemove = id => dispatch(deleteContact(id));
 
   return (
     <StyledListItem>
       <span className="name">{name}</span>
-      <span className="number">{number}</span>
+      <span className="phone">{phone}</span>
 
       <Button onClick={onRemove} value={id}>
         Remove
@@ -42,7 +42,7 @@ const Contact = ({ name, number, id }) => {
 
 Contact.propTypes = {
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };
 

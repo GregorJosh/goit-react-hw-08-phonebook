@@ -27,10 +27,10 @@ const ContactForm = () => {
 
   const [formData, setFormData] = useState({
     name: '',
-    number: '',
+    phone: '',
   });
 
-  const { name, number } = formData;
+  const { name, phone } = formData;
 
   const onChange = ({ name, newValue }) => {
     const newFormData = {
@@ -44,12 +44,12 @@ const ContactForm = () => {
     event.preventDefault();
 
     if (!searchSimiliarName(name)) {
-      dispatch(addContact({ name, number }));
+      dispatch(addContact({ name, phone }));
     } else {
       dispatch(setError(`${name} is already in contacts`));
     }
 
-    setFormData({ name: '', number: '' });
+    setFormData({ name: '', phone: '' });
   };
 
   const searchSimiliarName = name => {
@@ -78,12 +78,12 @@ const ContactForm = () => {
 
       <FormField label="Number" vertical>
         <Input
-          name="number"
+          name="phone"
           type="tel"
           pattern="\+?[0-9]{1,4}?[\-. ]?\(?[0-9]{1,3}?\)?[\-. ]?[0-9]{1,4}[\-. ]?[0-9]{1,4}[\-. ]?[0-9]{1,9}"
           title="Phone number must be minimum 5 digits and can contain spaces, dashes, parentheses and can start with +"
           onChange={onChange}
-          value={number}
+          value={phone}
         />
       </FormField>
       <Button type="submit">Add contact</Button>
