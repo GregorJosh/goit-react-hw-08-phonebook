@@ -10,6 +10,7 @@ import MessageBox from './MessageBox';
 
 import { fetchContacts } from 'redux/operations';
 import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
+import { setError } from 'redux/contactsSlice';
 
 const App = () => {
   const contacts = useSelector(selectContacts);
@@ -22,6 +23,14 @@ const App = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        dispatch(setError(null));
+      }, 5000);
+    }
+  }, [dispatch, error]);
+
   return (
     <>
       <Container>
@@ -31,7 +40,7 @@ const App = () => {
 
       {isLoading && <Loader />}
       {error && <MessageBox type="error" message={error} />}
-      
+
       {contacts.length ? (
         <ContactList />
       ) : (

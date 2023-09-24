@@ -7,7 +7,7 @@ import FormField from 'components/FormField';
 import Input from 'components/Input';
 
 import { setFilter } from 'redux/filterSlice';
-import { selectFilteredContacts, selectFilter } from 'redux/selectors';
+import { selectFilter, selectContacts } from 'redux/selectors';
 
 const StyledList = styled.ul`
   display: flex;
@@ -18,11 +18,24 @@ const StyledList = styled.ul`
 
 const ContactList = () => {
   const filter = useSelector(selectFilter);
-  const contacts = useSelector(selectFilteredContacts);
+  const contacts = useSelector(selectContacts);
 
   const dispatch = useDispatch();
 
   const onNewFilter = ({ newValue }) => dispatch(setFilter(newValue));
+
+  const getFilteredContacts = () => {
+    if (!filter) {
+      return contacts;
+    }
+
+    return contacts.filter(contact => {
+      const filterLC = filter.toLowerCase();
+      const contactNameLC = contact.name.toLowerCase();
+
+      return contactNameLC.includes(filterLC);
+    });
+  };
 
   return (
     <Section title="Contacts">
@@ -38,7 +51,7 @@ const ContactList = () => {
       </FormField>
 
       <StyledList>
-        {contacts.map(({ id, name, phone }) => (
+        {getFilteredContacts().map(({ id, name, phone }) => (
           <Contact key={id} name={name} phone={phone} id={id} />
         ))}
       </StyledList>
