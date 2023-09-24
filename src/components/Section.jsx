@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import styles from './Section.module.css';
+import Container from 'components/Container';
 
-import Container from 'components/Container/Container';
+const StyledHeading = styled.h2`
+  font-weight: 600;
+`;
 
 const Section = ({ title, children }) => {
-  const { section, heading } = styles;
-
   return (
-    <section className={section}>
+    <section>
       <Container>
-        <h2 className={heading}>{title}</h2>
+        <StyledHeading>{title}</StyledHeading>
         {children}
       </Container>
     </section>

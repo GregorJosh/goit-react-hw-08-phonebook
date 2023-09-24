@@ -1,14 +1,23 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 
-import Button from 'components/Button/Button';
-import Input from 'components/Input/Input';
-import FormField from 'components/FormField/FormField';
-
+import Button from 'components/Button';
+import Input from 'components/Input';
+import FormField from 'components/FormField';
 import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
 
-import styles from './ContactForm.module.css';
+const StyledForm = styled.form`
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+
+  border: 2px solid rgba(128, 128, 128, 0.221);
+`;
 
 const ContactForm = () => {
   const contacts = useSelector(selectContacts);
@@ -54,7 +63,7 @@ const ContactForm = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={onSubmit}>
+    <StyledForm onSubmit={onSubmit}>
       <FormField label="Name" vertical>
         <Input
           name="name"
@@ -76,7 +85,7 @@ const ContactForm = () => {
         />
       </FormField>
       <Button type="submit">Add contact</Button>
-    </form>
+    </StyledForm>
   );
 };
 

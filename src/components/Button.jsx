@@ -1,6 +1,21 @@
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import styles from './Button.module.css';
+const StyledButton = styled.button`
+  padding: 5px 20px;
+
+  cursor: pointer;
+  background-color: white;
+  box-shadow: var(--def-box-shadow);
+  border-radius: 4px;
+  border: var(--def-border);
+
+  font-weight: 500;
+
+  &:hover {
+    background-color: rgb(244, 244, 244);
+  }
+`;
 
 const Button = props => {
   const { children: label, type, value } = props;
@@ -12,14 +27,9 @@ const Button = props => {
   };
 
   return (
-    <button
-      className={styles.button}
-      type={type}
-      onClick={onClick}
-      data-value={value}
-    >
+    <StyledButton type={type} onClick={onClick} data-value={value}>
       {label}
-    </button>
+    </StyledButton>
   );
 };
 

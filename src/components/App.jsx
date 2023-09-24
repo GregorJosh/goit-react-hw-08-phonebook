@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Container from './Container/Container';
-import ContactForm from './ContactForm/ContactForm';
-import ContactList from './ContactList/ContactList';
-import Notification from './Notification/Notification';
-import Loader from './Loader/Loader';
+import Container from './Container';
+import ContactForm from './ContactForm';
+import ContactList from './ContactList';
+import Notification from './Notification';
+import Loader from './Loader';
+import MessageBox from './MessageBox';
 
 import { fetchContacts } from 'redux/operations';
 import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
@@ -28,7 +29,7 @@ const App = () => {
         <ContactForm />
       </Container>
       {isLoading && <Loader />}
-      {error && <div>{error}</div>}
+      {error && <MessageBox type="error" message={error} />}
       {contacts.length ? (
         <ContactList />
       ) : (

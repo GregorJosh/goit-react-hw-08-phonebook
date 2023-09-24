@@ -41,8 +41,7 @@ const contactsSlice = createSlice({
         state.items = state.items.filter(({ id }) => id !== action.payload);
       })
       .addMatcher(isPending, onPending)
-      .addMatcher(isRejected, onRejected)
-      .addDefaultCase(state => {state.error = "function not found."});
+      .addMatcher(isRejected, onRejected);
   },
 });
 
