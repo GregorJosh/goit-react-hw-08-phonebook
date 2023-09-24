@@ -25,6 +25,11 @@ const contactsSlice = createSlice({
     isLoading: false,
     error: null,
   },
+  reducers: {
+    setError(state, action) {
+      state.error = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.fulfilled, (state, action) => {
@@ -45,4 +50,5 @@ const contactsSlice = createSlice({
   },
 });
 
+export const setError = contactsSlice.actions.setError;
 export const contactsReducer = contactsSlice.reducer;

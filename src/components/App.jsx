@@ -28,8 +28,10 @@ const App = () => {
         <h1>Phonebook</h1>
         <ContactForm />
       </Container>
+
       {isLoading && <Loader />}
       {error && <MessageBox type="error" message={error} />}
+      
       {contacts.length ? (
         <ContactList />
       ) : (

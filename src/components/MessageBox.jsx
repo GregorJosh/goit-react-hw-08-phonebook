@@ -7,7 +7,7 @@ const MessageBox = ({ type = 'info', message }) => {
   return (
     <section>
       <Container>
-        <Notification message={message} />
+        <Notification type={type} message={message} />
       </Container>
     </section>
   );
