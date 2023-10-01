@@ -43,7 +43,14 @@ const StyledInput = styled.input`
 `;
 
 const Input = props => {
-  const { name, type, pattern, title, placeholder, value } = props;
+  const {
+    name,
+    type = 'text',
+    pattern = '[0-9a-zA-Z ]',
+    title,
+    placeholder = 'text input placeholder',
+    value,
+  } = props;
 
   const onChange = event => {
     const newValue = event.target.value;
