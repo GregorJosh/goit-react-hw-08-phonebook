@@ -16,6 +16,7 @@ import {
 } from 'redux/contacts/selectors';
 import { setError } from 'redux/contacts/slice';
 import NavBar from 'components/NavBar';
+import { Helmet } from 'react-helmet';
 
 const Contacts = () => {
   const contacts = useSelector(selectContacts);
@@ -38,6 +39,9 @@ const Contacts = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Phonebook - Contacts</title>
+      </Helmet>
       <NavBar />
       <Container>
         <ContactForm />
