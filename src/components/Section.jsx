@@ -7,11 +7,11 @@ const StyledHeading = styled.h2`
   font-weight: 600;
 `;
 
-const Section = ({ title, children }) => {
+const Section = ({ className, title, children }) => {
   return (
-    <section>
+    <section className={className}>
       <Container>
-        <StyledHeading>{title}</StyledHeading>
+        {title && <StyledHeading>{title}</StyledHeading>}
         {children}
       </Container>
     </section>
@@ -19,7 +19,8 @@ const Section = ({ title, children }) => {
 };
 
 Section.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  className: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 

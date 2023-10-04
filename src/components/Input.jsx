@@ -46,9 +46,9 @@ const Input = props => {
   const {
     name,
     type = 'text',
-    pattern = '[0-9a-zA-Z ]',
-    title,
-    placeholder = 'text input placeholder',
+    pattern = '[0-9a-zA-ZąęćśńłóżźĄĘĆŚŃŁÓŻŹ ]+',
+    title = 'Only letters, space and digits',
+    placeholder,
     value,
   } = props;
 

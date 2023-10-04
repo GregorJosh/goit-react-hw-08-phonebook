@@ -1,18 +1,23 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Container from './Container';
-import ContactForm from './ContactForm';
-import ContactList from './ContactList';
-import Notification from './Notification';
-import Loader from './Loader';
-import MessageBox from './MessageBox';
+import Container from '../components/Container';
+import ContactForm from '../components/ContactForm';
+import ContactList from '../components/ContactList';
+import Notification from '../components/Notification';
+import Loader from '../components/Loader';
+import MessageBox from '../components/MessageBox';
 
-import { fetchContacts } from 'redux/operations';
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
-import { setError } from 'redux/contactsSlice';
+import { fetchContacts } from 'redux/contacts/operations';
+import {
+  selectContacts,
+  selectError,
+  selectIsLoading,
+} from 'redux/contacts/selectors';
+import { setError } from 'redux/contacts/slice';
+import NavBar from 'components/NavBar';
 
-const App = () => {
+const Contacts = () => {
   const contacts = useSelector(selectContacts);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
@@ -33,8 +38,8 @@ const App = () => {
 
   return (
     <>
+      <NavBar />
       <Container>
-        <h1>Phonebook</h1>
         <ContactForm />
       </Container>
 
@@ -52,4 +57,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Contacts;

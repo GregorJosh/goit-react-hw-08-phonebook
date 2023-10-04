@@ -1,4 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import Contact from 'components/Contact';
@@ -6,8 +7,7 @@ import Section from 'components/Section';
 import FormField from 'components/FormField';
 import Input from 'components/Input';
 
-import { setFilter } from 'redux/filterSlice';
-import { selectFilter, selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 
 const StyledList = styled.ul`
   display: flex;
@@ -17,12 +17,9 @@ const StyledList = styled.ul`
 `;
 
 const ContactList = () => {
-  const filter = useSelector(selectFilter);
+  const [filter, setFilter] = useState('');
   const contacts = useSelector(selectContacts);
-
-  const dispatch = useDispatch();
-
-  const onNewFilter = ({ newValue }) => dispatch(setFilter(newValue));
+  const onNewFilter = ({ newValue }) => setFilter(newValue);
 
   const getFilteredContacts = () => {
     if (!filter) {
@@ -51,8 +48,8 @@ const ContactList = () => {
       </FormField>
 
       <StyledList>
-        {getFilteredContacts().map(({ id, name, phone }) => (
-          <Contact key={id} name={name} phone={phone} id={id} />
+        {getFilteredContacts().map(({ id, name, number }) => (
+          <Contact key={id} name={name} phone={number} id={id} />
         ))}
       </StyledList>
     </Section>

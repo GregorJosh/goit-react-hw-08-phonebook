@@ -13,13 +13,16 @@ const StyledDiv = styled.div`
   gap: 20px;
 `;
 
-const Container = ({ children }) => <StyledDiv>{children}</StyledDiv>;
+const Container = ({ children, className }) => (
+  <StyledDiv className={className}>{children}</StyledDiv>
+);
 
 Container.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.arrayOf(PropTypes.node),
   ]).isRequired,
+  className: PropTypes.string,
 };
 
 export default Container;

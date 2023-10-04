@@ -5,20 +5,20 @@ const StyledButton = styled.button`
   padding: 5px 20px;
 
   cursor: pointer;
-  background-color: white;
+  background-color: var(--color-blue);
+  color: white;
   box-shadow: var(--def-box-shadow);
   border-radius: 4px;
   border: var(--def-border);
-
   font-weight: 500;
 
   &:hover {
-    background-color: rgb(244, 244, 244);
+    background-color: var(--color-blue-light);
   }
 `;
 
 const Button = props => {
-  const { children: label, type, value } = props;
+  const { children: label, type, value, className } = props;
 
   const onClick = event => {
     if (props.onClick) {
@@ -27,7 +27,12 @@ const Button = props => {
   };
 
   return (
-    <StyledButton type={type} onClick={onClick} data-value={value}>
+    <StyledButton
+      className={className}
+      type={type}
+      onClick={onClick}
+      data-value={value}
+    >
       {label}
     </StyledButton>
   );
@@ -38,6 +43,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.string,
   value: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Button;
