@@ -1,13 +1,24 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-08-phonebook/static/css/main.1542121c.css",
-    "main.js": "/goit-react-hw-08-phonebook/static/js/main.a9acc995.js",
+    "main.css": "/goit-react-hw-08-phonebook/static/css/main.5735351a.css",
+    "main.js": "/goit-react-hw-08-phonebook/static/js/main.fd53a4bf.js",
+    "static/js/257.2f4b6a30.chunk.js": "/goit-react-hw-08-phonebook/static/js/257.2f4b6a30.chunk.js",
+    "static/js/893.590cb86f.chunk.js": "/goit-react-hw-08-phonebook/static/js/893.590cb86f.chunk.js",
+    "static/js/899.a06b97ce.chunk.js": "/goit-react-hw-08-phonebook/static/js/899.a06b97ce.chunk.js",
+    "static/js/270.b46117f4.chunk.js": "/goit-react-hw-08-phonebook/static/js/270.b46117f4.chunk.js",
+    "static/js/430.366b75a1.chunk.js": "/goit-react-hw-08-phonebook/static/js/430.366b75a1.chunk.js",
+    "static/media/people.jpg": "/goit-react-hw-08-phonebook/static/media/people.cf9e8fd06bce805f740e.jpg",
     "index.html": "/goit-react-hw-08-phonebook/index.html",
-    "main.1542121c.css.map": "/goit-react-hw-08-phonebook/static/css/main.1542121c.css.map",
-    "main.a9acc995.js.map": "/goit-react-hw-08-phonebook/static/js/main.a9acc995.js.map"
+    "main.5735351a.css.map": "/goit-react-hw-08-phonebook/static/css/main.5735351a.css.map",
+    "main.fd53a4bf.js.map": "/goit-react-hw-08-phonebook/static/js/main.fd53a4bf.js.map",
+    "257.2f4b6a30.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/257.2f4b6a30.chunk.js.map",
+    "893.590cb86f.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/893.590cb86f.chunk.js.map",
+    "899.a06b97ce.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/899.a06b97ce.chunk.js.map",
+    "270.b46117f4.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/270.b46117f4.chunk.js.map",
+    "430.366b75a1.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/430.366b75a1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1542121c.css",
-    "static/js/main.a9acc995.js"
+    "static/css/main.5735351a.css",
+    "static/js/main.fd53a4bf.js"
   ]
 }
