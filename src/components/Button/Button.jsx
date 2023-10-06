@@ -1,21 +1,6 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
-const StyledButton = styled.button`
-  padding: 5px 20px;
-
-  cursor: pointer;
-  background-color: var(--color-blue);
-  color: white;
-  box-shadow: var(--def-box-shadow);
-  border-radius: 4px;
-  border: var(--def-border);
-  font-weight: 500;
-
-  &:hover {
-    background-color: var(--color-blue-light);
-  }
-`;
+import { StyledButton } from './Button.styled';
 
 const Button = props => {
   const { children: label, type, value, className } = props;

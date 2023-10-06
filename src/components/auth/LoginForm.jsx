@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import FormField from 'components/FormField';
-import Input from 'components/Input';
-import Button from 'components/Button';
+import FormField from 'components/FormField/FormField';
+import Input from 'components/Input/Input';
+import Button from 'components/Button/Button';
 import { loginUser } from 'redux/auth/operations';
 
 import { StyledForm } from './StyledForm.styled';

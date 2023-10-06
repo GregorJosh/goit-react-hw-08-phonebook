@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
 
-import Container from 'components/Container';
-import ContactForm from 'components/ContactForm';
-import ContactList from 'components/ContactList';
-import Notification from 'components/Notification';
-import NavBar from 'components/NavBar';
+import Container from 'components/Container/Container';
+import ContactForm from 'components/ContactForm/ContactForm';
+import ContactList from 'components/ContactList/ContactList';
+import Notification from 'components/Notification/Notification';
+import NavBar from 'components/NavBar/NavBar';
 
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';

@@ -1,28 +1,9 @@
 import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Button from 'components/Button';
+import Button from 'components/Button/Button';
+import { StyledListItem } from './Contact.styled';
 import { deleteContact } from 'redux/contacts/operations';
-
-const StyledListItem = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  @media screen and (min-width: 1200px) {
-    max-width: 60%;
-  }
-
-  > .name {
-    width: 30%;
-  }
-
-  > .phone {
-    width: 30%;
-    text-align: right;
-  }
-`;
 
 const Contact = ({ name, phone, id }) => {
   const dispatch = useDispatch();

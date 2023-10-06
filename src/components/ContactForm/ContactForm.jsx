@@ -1,25 +1,15 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
+import { Notify } from 'notiflix';
 
-import Button from 'components/Button';
-import Input from 'components/Input';
-import FormField from 'components/FormField';
+import Button from 'components/Button/Button';
+import Input from 'components/Input/Input';
+import FormField from 'components/FormField/FormField';
+
+import { StyledForm } from './ContactForm.styled';
 
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
-import { Notify } from 'notiflix';
-
-const StyledForm = styled.form`
-  padding: 20px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-
-  border: 2px solid rgba(128, 128, 128, 0.221);
-`;
 
 const ContactForm = () => {
   const contacts = useSelector(selectContacts);

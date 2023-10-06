@@ -1,20 +1,14 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
 
-import Contact from 'components/Contact';
-import Section from 'components/Section';
-import FormField from 'components/FormField';
-import Input from 'components/Input';
+import Contact from 'components/Contact/Contact';
+import Section from 'components/Section/Section';
+import FormField from 'components/FormField/FormField';
+import Input from 'components/Input/Input';
+
+import { StyledList } from './ContactList.styled';
 
 import { selectContacts } from 'redux/contacts/selectors';
-
-const StyledList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-bottom: 50px;
-`;
 
 const ContactList = () => {
   const [filter, setFilter] = useState('');
