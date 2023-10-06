@@ -1,50 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Loading } from 'notiflix';
 
 import { addContact, deleteContact, fetchContacts } from './operations';
-
-const onPending = state => {
-  state.isLoading = true;
-};
-
-const onRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
-
-const isPending = action => {
-  return action.type.endsWith('/pending');
-};
-
-const isRejected = action => {
-  return action.type.endsWith('/rejected');
-};
+import { isRejected, isPending, onRejected, onPending } from 'redux/helpers';
 
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
     items: [],
-    isLoading: false,
-    error: null,
-  },
-  reducers: {
-    setError(state, action) {
-      state.error = action.payload;
-    },
   },
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
         state.items = action.payload;
       })
       .addCase(addContact.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.items.push(action.payload);
+
+        Loading.remove();
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.items = state.items.filter(({ id }) => id !== action.payload);
+
+        Loading.remove();
       })
       .addMatcher(isPending, onPending)
       .addMatcher(isRejected, onRejected);

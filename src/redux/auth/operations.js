@@ -11,7 +11,7 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-const createUser = createAsyncThunk(
+export const createUser = createAsyncThunk(
   'auth/createUser',
   async (user, thunkAPI) => {
     try {
@@ -21,12 +21,13 @@ const createUser = createAsyncThunk(
 
       return response.data;
     } catch (error) {
+      console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-const loginUser = createAsyncThunk('auth/loginUser', async (user, thunkAPI) => {
+export const loginUser = createAsyncThunk('auth/loginUser', async (user, thunkAPI) => {
   try {
     const response = await axios.post('/users/login', user);
 
@@ -38,7 +39,7 @@ const loginUser = createAsyncThunk('auth/loginUser', async (user, thunkAPI) => {
   }
 });
 
-const logoutUser = createAsyncThunk('auth/logoutUser', async (_, thunkAPI) => {
+export const logoutUser = createAsyncThunk('auth/logoutUser', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
 
@@ -48,13 +49,13 @@ const logoutUser = createAsyncThunk('auth/logoutUser', async (_, thunkAPI) => {
   }
 });
 
-const refreshUser = createAsyncThunk(
+export const refreshUser = createAsyncThunk(
   'auth/refreshUser',
   async (_, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
 
     if (token === null) {
-      return thunkAPI.rejectWithValue('Unable to fetch user');
+      return thunkAPI.rejectWithValue("Register or Log in to access contacts page.");
     }
 
     try {
@@ -68,5 +69,3 @@ const refreshUser = createAsyncThunk(
     }
   }
 );
-
-export { createUser, refreshUser, logoutUser, loginUser };

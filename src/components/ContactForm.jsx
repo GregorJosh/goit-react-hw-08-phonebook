@@ -6,9 +6,9 @@ import Button from 'components/Button';
 import Input from 'components/Input';
 import FormField from 'components/FormField';
 
-import { setError } from 'redux/contacts/slice';
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
+import { Notify } from 'notiflix';
 
 const StyledForm = styled.form`
   padding: 20px;
@@ -46,7 +46,7 @@ const ContactForm = () => {
     if (!searchSimiliarName(name)) {
       dispatch(addContact({ name, number: phone }));
     } else {
-      dispatch(setError(`${name} is already in contacts`));
+      Notify.failure(`${name} is already in contacts`);
     }
 
     setFormData({ name: '', phone: '' });

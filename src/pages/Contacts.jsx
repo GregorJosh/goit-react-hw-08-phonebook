@@ -1,41 +1,23 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
-import Container from '../components/Container';
-import ContactForm from '../components/ContactForm';
-import ContactList from '../components/ContactList';
-import Notification from '../components/Notification';
-import Loader from '../components/Loader';
-import MessageBox from '../components/MessageBox';
+import Container from 'components/Container';
+import ContactForm from 'components/ContactForm';
+import ContactList from 'components/ContactList';
+import Notification from 'components/Notification';
+import NavBar from 'components/NavBar';
 
 import { fetchContacts } from 'redux/contacts/operations';
-import {
-  selectContacts,
-  selectError,
-  selectIsLoading,
-} from 'redux/contacts/selectors';
-import { setError } from 'redux/contacts/slice';
-import NavBar from 'components/NavBar';
-import { Helmet } from 'react-helmet';
+import { selectContacts } from 'redux/contacts/selectors';
 
 const Contacts = () => {
   const contacts = useSelector(selectContacts);
-  const error = useSelector(selectError);
-  const isLoading = useSelector(selectIsLoading);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (error) {
-      setTimeout(() => {
-        dispatch(setError(null));
-      }, 5000);
-    }
-  }, [dispatch, error]);
 
   return (
     <>
@@ -46,9 +28,6 @@ const Contacts = () => {
       <Container>
         <ContactForm />
       </Container>
-
-      {isLoading && <Loader />}
-      {error && <MessageBox type="error" message={error} />}
 
       {contacts.length ? (
         <ContactList />

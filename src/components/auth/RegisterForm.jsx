@@ -54,6 +54,9 @@ const RegisterForm = () => {
         <Input
           name="password"
           type="password"
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,20}$"
+          title="Password must have at least one lowercase letter, one uppercase letter, 
+          one digit and must be at least 8 characters long."
           value={password}
           onChange={onInput}
         />

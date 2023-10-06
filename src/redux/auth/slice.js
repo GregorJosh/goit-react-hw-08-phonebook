@@ -1,6 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Loading } from 'notiflix';
 
 import { createUser, refreshUser, logoutUser, loginUser } from './operations';
+import { isRejected, isPending, onRejected, onPending } from 'redux/helpers';
+
+const onLogin = (state, action) => {
+  state.user = action.payload.user;
+  state.token = action.payload.token;
+  state.isLoggedIn = true;
+
+  Loading.remove();
+};
 
 const authSlice = createSlice({
   name: 'auth',
@@ -12,16 +22,8 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(createUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-      })
-      .addCase(loginUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-      })
+      .addCase(createUser.fulfilled, onLogin)
+      .addCase(loginUser.fulfilled, onLogin)
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
       })
@@ -29,15 +31,23 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoggedIn = true;
         state.user = action.payload;
+
+        Loading.remove();
       })
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
+
+        Loading.remove();
       })
       .addCase(logoutUser.fulfilled, state => {
         state.isLoggedIn = false;
         state.token = null;
         state.user = { name: null, email: null };
-      });
+
+        Loading.remove();
+      })
+      .addMatcher(isPending, onPending)
+      .addMatcher(isRejected, onRejected);
   },
 });
 
